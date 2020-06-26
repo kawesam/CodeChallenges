@@ -33,3 +33,34 @@
 // Therefore, sum = 495 + 491 + 40 = 1026.
 
 
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var sumNumbers = function(root,sum=0) {
+    let numbers = [];
+    let left = 0;
+    let right = 0;
+    if(root == null){
+        return 0;
+    }else{
+        let value = sum * 10 + root.val;
+
+        left = sumNumbers(root.left,value);
+        right = sumNumbers(root.right,value);
+
+        if(left + right !==0){
+            value = left + right;
+        }
+        return value;
+    }
+
+};
